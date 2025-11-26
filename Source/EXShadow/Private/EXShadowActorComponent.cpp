@@ -158,16 +158,17 @@ void UEXShadowActorComponent::UpdateMaterialParams()
 	
 	const FMatrix ViewProjMatrix = ViewTransformMatrix * OrthoProjMatrix;
 	
-	// Taken from SceneCaptureRendering.cpp
+	/*
+	 * Taken from SceneCaptureRendering.cpp
+	 * Epic packs it's matrices as LinearColors and then passes them as a series of vectors
+	 */
 	FMatrix44f ViewProjMatrixf = FMatrix44f(ViewProjMatrix);
 	const FLinearColor* MatrixVectors = (const FLinearColor*)&ViewProjMatrixf;
 
 	for (UMaterialInstanceDynamic* Mat : MIDCache)
 	{
-		/*
-		 *  The material editor doesn't seem to provide normal matrix operations
-		 */
 		Mat->SetTextureParameterValue(FName("ShadowDepthRT"), ShadowDepthRenderTarget);
+		// Projection matrix is going to be used by the Transform3x3Matrix node inside of the material
 		Mat->SetVectorParameterValue(FName("ShadowProjX"), MatrixVectors[0]);
 		Mat->SetVectorParameterValue(FName("ShadowProjY"), MatrixVectors[1]);
 		Mat->SetVectorParameterValue(FName("ShadowProjZ"), MatrixVectors[2]);
