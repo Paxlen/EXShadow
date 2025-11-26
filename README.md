@@ -19,8 +19,6 @@ Luckily Unreal’s USceneCaptureComponent2D has the ability to capture scene dep
 Works on Actors that have one or more static/skeletal mesh components.
 
 1. In an Actor Blueprint add an EXShadowActorComponent
-![Add EXShadowComponent](/Images/Blueprint_Component.png)
 2. The component has several properties that can be modified from the Details panel, such as the render target size.
-![Component properties](/Images/Blueprint_Component.png)
 3. Modifiy the mesh materials to include the MF_EXSampleShadowMap Material Function node. The output of this node will be the shadow map.
-![MaterialFunction](/Images/MaterialEditor_MF.png)
+![MaterialFunction](/Images/EXShadow_Tut.png)
