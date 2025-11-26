@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EXShadow",
+	"Description": "ActorComponent that provides a custom shadow pass",
+	"Category": "Other",
+	"CreatedBy": "Patrick Axlen",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "EXShadow",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
