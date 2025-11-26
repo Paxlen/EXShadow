@@ -17,8 +17,20 @@ Luckily Unreal’s USceneCaptureComponent2D has the ability to capture scene dep
 ## Usage
 
 Works on Actors that have one or more static/skeletal mesh components.
+The intent is for it to be used with Unlit materials (which will not receive default shadows) where you build your own shading model.
 
 1. In an Actor Blueprint add an EXShadowActorComponent
 2. The component has several properties that can be modified from the Details panel, such as the render target size.
-3. Modifiy the mesh materials to include the MF_EXSampleShadowMap Material Function node. The output of this node will be the shadow map.
+3. Modify the mesh materials to include the MF_EXSampleShadowMap Material Function node. The output of this node will be the shadow map.
 ![MaterialFunction](/Images/EXShadow_Tut.png)
+
+## Issues and Limitations
+
+This is intended to be a lookdev tool, not something that should be used in a shipping title due to it not being very efficient as is:
+* Each instance of an actor that uses this component will generate it's own shadow depth render target.
+* Because the shadow map generation is happening inside a material there are transformations that are happening on a per-pixel basis that should really be happening per-vertex.
+
+## Future Work
+
+I recently learned (thanks to William Mishra-Manning's recent blog post https://medium.com/@manning.w27/advanced-graphics-programming-in-unreal-part-1-10488f2e17dd) that it's possible to add custom rendering passes from inside a plugin without having to modify the engine.
+I've been learning Unreal's graphics programming architecture and would like to attempt to do a proper custom shadow rendering pass. 
