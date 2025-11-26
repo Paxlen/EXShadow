@@ -26,9 +26,14 @@ The intent is for it to be used with Unlit materials (which will not receive def
 
 ## Issues and Limitations
 
-This is intended to be a lookdev tool, not something that should be used in a shipping title due to it not being very efficient as is:
-* Each instance of an actor that uses this component will generate it's own shadow depth render target.
-* Because the shadow map generation is happening inside a material there are transformations that are happening on a per-pixel basis that should really be happening per-vertex.
+* This is intended to be a lookdev tool, not something that should be used in a shipping title due to it not being very efficient as is:
+	* Each instance of an actor that uses this component will generate it's own shadow depth render target.
+	* Because the shadow map generation is happening inside a material there are transformations that are happening on a per-pixel basis that should really be happening per-vertex.
+
+* Currently just works with DirectionalLights (orthographic shadows).
+
+* Currently doesn't have any shadow filtering. Want to try out  Percentage-Closer Filtering and Poisson disc sampling.
+
 
 ## Future Work
 
